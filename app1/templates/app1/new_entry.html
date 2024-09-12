@@ -1,0 +1,11 @@
+{% extends "app1/base.html" %}
+
+{% block content %}
+    <p><a href = "{% url 'app1:new_entrie' topic.id %}"></a></p>
+    <p>ایجاد موضوع جدید</p>
+    <form action="{% url 'app1:new_entrie' topic.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">ثبت</button>
+    </form>
+{% endblock content %}

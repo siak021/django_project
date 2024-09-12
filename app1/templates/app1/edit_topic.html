@@ -1,0 +1,10 @@
+{% extends "app1/base.html" %}
+
+{% block content %}
+    <p>ویرایش سرفصل</p>
+    <form action="{% url 'app1:edit_topic' topic.id %}" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button name="submit">ذخیره</button>
+    </form>
+{% endblock content %}

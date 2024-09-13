@@ -93,3 +93,6 @@ def edit_topic(request,topic_id):
             return redirect('app1:topics')
     context ={'topic':topic , 'form':form}
     return render(request, 'app1/edit_topic.html', context)
+
+def about_us(request):
+    return render(request,'app1/about_us.html')

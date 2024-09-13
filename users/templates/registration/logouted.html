@@ -1,8 +1,12 @@
 {% extends "app1/base.html" %}
 
+{% block page_header %}
+    <h2>{{ user.username }}</h2>
+{% endblock page_header %}
+
 {% block content %}
     <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
-        <button name="submit">LOGOUT</button>
+        <button name="submit" class="btn-danger">LOGOUT</button>
     </form>
 {% endblock content %}

@@ -6,6 +6,9 @@
 {% endblock page_header %}
 
 {% block content %}
+    <a href="{% url 'app1:new_topic' %}" class="btn btn-sm btn-success">
+        Add +
+    </a>
    <ul>
         {% for topic in topics %}
             <li>
@@ -17,7 +20,4 @@
             <li> سرفصلی برای نمایش وحود ندارد </li> 
         {% endfor %}
    </ul>
-   <a href="{% url 'app1:new_topic' %}" class="btn btn-sm btn-success">
-        Add +
-   </a>
 {% endblock content %}

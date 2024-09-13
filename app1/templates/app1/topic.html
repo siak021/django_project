@@ -1,23 +1,28 @@
 
 {% extends "app1/base.html" %}
 
+{% block page_header %}
+    <h3>{{topic}}</h3>
+{% endblock page_header %}
+
 {% block content %}
-   <p>سرفصل</p>
-   <p>"{{topic}}"</p>
+
    <p>
-    <a href="{% url 'app1:new_entrie' topic.id %}">اضافه کردن +</a>
+    <a href="{% url 'app1:new_entrie' topic.id %}" class="btn btn-sm btn-success">Add +</a>
    </p>
-   <ul>
-        {% for entry in entries %}
-            <li>
-                <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-                <p>{{ entry.text|linebreaks }}</p>
-                <p>
-                    <a href="{% url 'app1:edit_entry' entry.id %}">ویرایش</a>
-                </p>
-            </li>
-        {% empty %}
-            <li> جزئیاتی برای نمایش وجود ندارد </li> 
-        {% endfor %}
-   </ul>
+    {% for entry in entries %}
+        <div class="card mb3">
+                <h5 class="card-header">
+                    {{ entry.date_added|date:'M d, Y H:i' }}
+                    <small>
+                        <a href="{% url 'app1:edit_entry' entry.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    </small>
+                </h5>
+                <div class="card-body">
+                    {{ entry.text|linebreaks }}
+                </div>
+        </div>
+    {% empty %}
+        <li> جزئیاتی برای نمایش وجود ندارد </li> 
+    {% endfor %}
 {% endblock content %}
